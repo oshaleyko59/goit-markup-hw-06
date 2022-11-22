@@ -1,0 +1,684 @@
+:root {
+  --color-primary: #757575;
+  --color-secondary: #212121;
+  --color-accent: #2196f3;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-footer-link: rgba(255, 255, 255, 0.6);
+  --color-background: #f5f5f5;
+  --color-background-secondary: #f5f4fa; /*btns */
+  --color-background-black: #2f303a;
+  --color-border: #eeeeee;
+  --color-fill-inactive: #afb1b8;
+
+  /* net values */
+  --net-row-num: 3;
+  --net-space: 30px;
+
+  /* animation */
+  --anim-timing: 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --anim-timing-test: 2050ms cubic-bezier(0.4, 0, 0.2, 1) 1000ms;
+}
+
+/* ============================== TAG SELECTORS ============================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+  letter-spacing: 0.03em;
+}
+
+/* ============================== AUXILARY CLASSES ========================== */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+/* «C1» Для всіх ефектів ховер і фокуса (колір, фон, тінь) зроблені переходи. Час - 250ms,
+функція розподілу часу - cubic-bezier(0.4, 0, 0.2, 1). */
+/* «C2» У переходах та анімаціях явно зазначені анімовані властивості. Ніде немає значення all. */
+.active-link:hover,
+.active-link:focus {
+  color: var(--color-accent);
+  fill: var(--color-accent);
+}
+
+.container {
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  /* outline: 2px solid red; */
+}
+
+.bg-color-secondary {
+  background-color: var(--color-background-secondary);
+}
+
+.section {
+  padding: 94px 0;
+}
+
+.section-h2 {
+  color: var(--color-secondary);
+  font-size: 36px;
+  line-height: calc(42 / 36);
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* ============================== HEADER ============================== */
+
+.hdr {
+  border-bottom: 1px solid #ececec;
+}
+
+/* header height = 80px based on link height = 80px, no paddings*/
+.hdr-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  font-family: Raleway;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: calc(31 / 26);
+  display: inline-block;
+  margin-right: 93px;
+}
+
+.logo-link.logo-in-header {
+  color: var(--color-black);
+  padding: 24px 0;
+}
+
+.logo-accent {
+  color: var(--color-accent);
+}
+
+.nav {
+  margin-right: auto;
+}
+
+/* line height increased to extende link active zone */
+.hdr-list {
+  display: flex;
+  font-weight: 500;
+  padding: auto 0;
+  line-height: 3;
+}
+
+.hdr-list > li:not(:last-child) {
+  margin-right: 50px;
+}
+
+.nav-list {
+  letter-spacing: 0.02em;
+}
+
+.nav-list-link {
+  display: inline-block;
+  color: var(--color-secondary);
+  text-align: center;
+  transition: color var(--anim-timing);
+}
+
+/* «C4» В навігації, за допомогою ::after, зроблено підкреслення посилання
+поточної сторінки */
+.nav-list-link.current {
+  position: relative;
+  color: var(--color-accent);
+}
+
+/* «C4» UNDERLINED UNDER HOVER */
+/* .nav-list-link.current:hover.nav-list-link.current::after {
+  content: "";
+  height: 4px;
+  width: 100%;
+  background-color: var(--color-accent);
+  display: block;
+  position: absolute;
+  bottom: -20px;
+} */
+
+/* «C4» ALWAYS UNDERLINED */
+.nav-list-link.current::after {
+  content: "";
+  height: 4px;
+  width: 100%;
+  background-color: var(--color-accent);
+  display: block;
+  position: absolute;
+  bottom:-20px;
+}
+
+.contact-list-link {
+  color: var(--color-primary);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  fill: var(--color-primary);
+  transition: color var(--anim-timing), fill var(--anim-timing);
+}
+
+/* ============================== FOOTER ============================== */
+
+.ftr-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.page-footer {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: var(--color-background-black);
+}
+
+.logo-link.in-footer {
+  color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.addr {
+  color: var(--color-white);
+  font-style: inherit;
+}
+
+.addr-list {
+  padding: 0px;
+}
+
+.on-map-color {
+  color: var(--color-white);
+}
+
+.remote-color {
+  color: var(--color-footer-link);
+}
+
+.addr-list-item {
+  max-height: 21px;
+  margin-bottom: 9px;
+}
+
+.addr-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.ftr-soc-wrap {
+  padding-top: 12px;
+  margin-left: 70px;
+}
+
+.ftr-soc-hdr {
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: calc(16.41 / 14);
+  /* letter-spacing: 0.03em; */
+}
+
+.ftr-soc-link {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ftr-soc-icon {
+  fill: #ffffff;
+}
+
+/* ============================== SOCIAL LINKS ============================== */
+
+.soc-list {
+  display: flex;
+  gap: 10px;
+}
+
+.soc-item {
+  width: 44px;
+  height: 44px;
+}
+
+.soc-link {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color var(--anim-timing);
+}
+
+.soc-icon {
+  fill: var(--color-fill-inactive);
+  transition: fill var(--anim-timing);
+}
+
+.soc-link:focus,
+.soc-link:hover {
+  background-color: var(--color-accent);
+}
+
+.soc-link:focus .soc-icon,
+.soc-link:hover .soc-icon {
+  fill: #fff;
+}
+
+/* ============================== HERO ============================== */
+
+/* фон - Велике зображення з ефектом затемнення (під хедером).
+не розтягується ширше свого оригінального розміру 1600рх.
+Затемнення - багатошаровий фон з градієнтом  */
+.hero {
+  /* background-color: var(--color-background-black); */
+  background-color: #c4c4c4;
+  background-image: linear-gradient(
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url(../images/Img.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  padding-top: 200px;
+  padding-bottom: 200px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.hero-hdr {
+  color: var(--color-white);
+  font-size: 44px;
+  font-weight: 900;
+  line-height: calc(60 / 44);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  height: 50px;
+  width: 216px;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: calc(30 / 16);
+  letter-spacing: 0.06em;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  border-style: none;
+}
+
+/* =========================== PROFILE SECTION ========================== */
+
+.profile-item {
+  width: 270px;
+}
+
+.profile-item::before {
+  display: block;
+  content: "";
+  height: 120px;
+  width: 270px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  background-color: var(--color-background-secondary);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.attention.profile-item::before {
+  background-image: url("../images/antenna.svg");
+}
+.punctuality.profile-item::before {
+  background-image: url("../images/clock.svg");
+}
+.planning.profile-item::before {
+  background-image: url("../images/diagram.svg");
+}
+
+.technology.profile-item::before {
+  background-image: url("../images/astronaut.svg");
+}
+
+.profile-title {
+  color: var(--color-secondary);
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  text-align: left;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.profile-description {
+  text-transform: capitalize;
+}
+
+/* ===================== SECTION  COMPETENCE ============================== */
+
+.competence {
+  padding-bottom: 94px;
+}
+
+.competence-list-item {
+  width: 370px;
+  position: relative;
+}
+
+/* = «C3» В секції Чим ми займаємось текст з фоном спозиційований
+поверх зображення. */
+.competence-title {
+  position: absolute;
+  width: inherit;
+  height: 70px;
+  padding-top: 27px;
+  bottom: 0px;
+  background-color: rgba(47, 48, 58, 0.8);
+  color: #ffffff;
+  font-size: 14px;
+  line-height: calc(16.41 / 14);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ===================== SECTION TEAM ============================== */
+
+.team-card {
+  background-color: var(--color-white);
+  font-size: 16px;
+  line-height: calc(19 / 16);
+  text-align: center;
+  padding-bottom: 30px;
+  border-radius: 0px 0px 4px 4px;
+  box-shadow: 0px 2px 1px 0px #00000033, 0px 1px 1px 0px #00000024,
+    0px 1px 3px 0px #0000001f;
+}
+
+.team-card-name {
+  color: var(--color-secondary);
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.team-card-description {
+  margin-bottom: 16px;
+}
+
+.soc-list.team-list {
+  justify-content: center;
+}
+
+/* ===================== SECTION CLIENTS ============================== */
+
+.clients-item {
+  height: 92px;
+  width: 170px;
+}
+
+.client-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid var(--color-fill-inactive);
+  padding: 16px 32px;
+  transition: border-color var(--anim-timing);
+}
+
+.clients-icon {
+  height: 60px;
+  width: 106px;
+  fill: var(--color-fill-inactive);
+  transition: fill var(--anim-timing);
+}
+
+.client-link:focus,
+.client-link:hover {
+  border-color: var(--color-accent);
+}
+
+.client-link:focus .clients-icon,
+.client-link:hover .clients-icon {
+  fill: var(--color-accent);
+}
+
+/* ============================== PORTFOLIO PAGE ============================== */
+
+.projects {
+  padding-top: 94px;
+  padding-bottom: 94px;
+}
+
+.filters {
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+
+.filters-item {
+  margin-left: 8px;
+}
+
+.filters-item:first-child {
+  margin-left: 0;
+}
+
+.filter-btn {
+  color: var(--color-secondary);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: calc(26 / 16);
+  letter-spacing: inherit;
+  padding: 6px 22px;
+  border-style: none;
+  transition: background-color var(--anim-timing), color var(--anim-timing),
+    box-shadow var(--anim-timing);
+}
+
+.filter-btn:hover,
+.filter-btn:focus {
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  box-shadow: 0px 2px 2px 0px #0000001f, 0px 1px 2px 0px #00000014,
+    0px 3px 1px 0px #0000001a;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc((-1) * var(--net-space));
+  margin-left: calc((-1) * var(--net-space));
+}
+
+.project-list-item {
+  margin-left: var(--net-space);
+  margin-top: var(--net-space);
+  flex-basis: calc(
+    100% / var(--net-row-num) - var(--net-space) * (var(--net-row-num - 1))
+  );
+}
+
+.project-card {
+  height: 404px;
+  width: 370px;
+  transition: box-shadow var(--anim-timing);
+}
+
+.project-card:hover {
+  box-shadow: 1px 4px 6px 0px #00000029, 0px 4px 4px 0px #0000000f,
+    0px 1px 1px 0px #0000001f;
+}
+
+/* = «C5» Синій оверлей з текстом на картках сторінки Портфоліо з'являється
+при ховері в будь-якому місці картки. */
+/* = «C6» оверлей  виїжджає знизу */
+.project-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  padding: 63px 24px;
+  background-color: rgba(33, 150, 243, 0.9);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: calc(28 / 18);
+  position: absolute;
+  top: 100%;
+  transition: top var(--anim-timing);
+}
+
+.project-card:hover .overlay {
+  top: 0px;
+}
+
+.project-description {
+  margin: 0;
+  padding: 20px 24px 19px;
+  border-bottom: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+.project-title {
+  color: var(--color-secondary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.project-type {
+  color: var(--color-primary);
+  font-size: 16px;
+  line-height: calc(30 / 16);
+}
+
+/* ============================== MODAL WINDOW ====================== */
+/*
+«D6» Спочатку модальне вікно і бекдроп приховані за допомогою класу is-hidden на бекдропі, в
+селекторі якого використовуються властивості visibility, opacity і pointer-events.
+ «D7» Якщо прибрати з бекдропа клас is-hidden - з'являється бекдроп і модальне вікно.
+ «D8» Поява і приховування модального вікна анімовано за допомогою переходу
+з довільним ефектом, наприклад scale або translate, і opacity.
+*/
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/*  «D1» оформлення напівпрозорого «бекдропа»
+    «D2» «Бекдроп» заповнює 100% висоти і ширини в'юпорту
+*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity var(--anim-timing);
+}
+
+/*
+«D4» Модальне вікно спозиційоване посередині бекдропа.
+«D8» Поява і приховування модального вікна анімовано за
+допомогою переходу з довільним ефектом, наприклад scale або translate, і opacity.
+*/
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 528px;
+  min-height: 581px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  /* margin: auto; */
+  transform: translate(-50%, -50%);
+  transition:  transform var(--anim-timing);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.1) rotate(-90deg);
+}
+
+/* «D5» оформлення кнопки закриття модального вікна  */
+.btn-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+   /* #ffffff; */
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
