@@ -4,7 +4,7 @@
   --color-accent: #2196f3;
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-footer-link: rgba(255, 255, 255, 0.6);
+  --color-footer-grey: rgba(255, 255, 255, 0.6);
   --color-background: #f5f5f5;
   --color-background-secondary: #f5f4fa; /*btns */
   --color-background-black: #2f303a;
@@ -202,7 +202,7 @@ body {
   background-color: var(--color-accent);
   display: block;
   position: absolute;
-  bottom:-20px;
+  bottom: -20px;
 }
 
 .contact-list-link {
@@ -246,7 +246,7 @@ body {
 }
 
 .remote-color {
-  color: var(--color-footer-link);
+  color: var(--color-footer-grey);
 }
 
 .addr-list-item {
@@ -258,18 +258,17 @@ body {
   margin-bottom: 0;
 }
 
-.ftr-soc-wrap {
+.ftr-wrap {
   padding-top: 12px;
   margin-left: 70px;
 }
 
-.ftr-soc-hdr {
+.ftr-hdr {
   margin-bottom: 20px;
   color: #ffffff;
   text-transform: uppercase;
   font-size: 14px;
   line-height: calc(16.41 / 14);
-  /* letter-spacing: 0.03em; */
 }
 
 .ftr-soc-link {
@@ -278,6 +277,48 @@ body {
 
 .ftr-soc-icon {
   fill: #ffffff;
+}
+
+/* ============================== SUBSCRIBE ============================== */
+
+/* TODO ??? */
+.subscription {
+  display: flex;
+}
+
+.btn-submit {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  height: 50px;
+  width: 200px;
+  border-radius: 4px;
+  border-style: none;
+  box-shadow: 0px 4px 4px 0px #00000026;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: calc(30 / 16);
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-send {
+  margin-left: 10px;
+}
+
+.email-input {
+  height: 50px;
+  width: 358px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: transparent;
+  color: var(--color-footer-grey);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(20 / 16);
+  padding: 15px 16px;
 }
 
 /* ============================== SOCIAL LINKS ============================== */
@@ -660,7 +701,7 @@ body {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   /* margin: auto; */
   transform: translate(-50%, -50%);
-  transition:  transform var(--anim-timing);
+  transition: transform var(--anim-timing);
 }
 
 .backdrop.is-hidden .modal {
@@ -674,7 +715,7 @@ body {
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: transparent;
-   /* #ffffff; */
+  /* #ffffff; */
   position: absolute;
   right: 8px;
   top: 8px;
