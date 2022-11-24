@@ -10,6 +10,13 @@
   --color-background-black: #2f303a;
   --color-border: #eeeeee;
   --color-fill-inactive: #afb1b8;
+  --border-modal: 1px solid rgba(33, 33, 33, 0.2);
+  --card-shadow: 0px 2px 1px 0px #00000033, 0px 1px 1px 0px #00000024,
+    0px 1px 3px 0px #0000001f;
+  --project-card-shadow: 1px 4px 6px 0px #00000029, 0px 4px 4px 0px #0000000f,
+    0px 1px 1px 0px #0000001f;
+  --btn-shadow: 0px 4px 4px 0px #00000026;
+  --btn-shadow-test: 0px 40px 4px 0px #ff000026;
 
   /* net values */
   --net-row-num: 3;
@@ -218,7 +225,9 @@ body {
 
 .ftr-container {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 .page-footer {
@@ -279,11 +288,11 @@ body {
   fill: #ffffff;
 }
 
-/* ============================== SUBSCRIBE ============================== */
+/* ============================== HW6 SUBSCRIBE SECTION ============================== */
 
-/* TODO ??? */
 .subscription {
   display: flex;
+  gap: 12px;
 }
 
 .btn-submit {
@@ -293,18 +302,23 @@ body {
   width: 200px;
   border-radius: 4px;
   border-style: none;
-  box-shadow: 0px 4px 4px 0px #00000026;
   font-weight: 700;
   font-size: 16px;
   line-height: calc(30 / 16);
   letter-spacing: 0.06em;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: none;
+  /*   box-shadow: var(--btn-shadow); */
+  /* transition: color var(--anim-timing-test); */
+  transition: box-shadow var(--anim-timing-test);
 }
-
-.icon-send {
-  margin-left: 10px;
+.btn-submit:hover,
+.btn-submit:focus {
+  /* color: var(--color-white); */
+  box-shadow: var(--btn-shadow-test);
 }
 
 .email-input {
@@ -319,6 +333,17 @@ body {
   font-weight: 400;
   line-height: calc(20 / 16);
   padding: 15px 16px;
+  box-shadow: none;
+  /*   box-shadow: (var(--btn-shadow); */
+  transition: border-color var(--anim-timing-test);
+  transition: box-shadow var(--anim-timing-test);
+}
+
+.email-input:hover,
+.email-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: var(--btn-shadow-test);
+  /*   box-shadow: (var(--btn-shadow); */
 }
 
 /* ============================== SOCIAL LINKS ============================== */
@@ -401,7 +426,7 @@ body {
   font-weight: 700;
   line-height: calc(30 / 16);
   letter-spacing: 0.06em;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--btn-shadow);
   border-style: none;
 }
 
@@ -486,8 +511,7 @@ body {
   text-align: center;
   padding-bottom: 30px;
   border-radius: 0px 0px 4px 4px;
-  box-shadow: 0px 2px 1px 0px #00000033, 0px 1px 1px 0px #00000024,
-    0px 1px 3px 0px #0000001f;
+  box-shadow: var(--card-shadow);
 }
 
 .team-card-name {
@@ -603,8 +627,7 @@ body {
 }
 
 .project-card:hover {
-  box-shadow: 1px 4px 6px 0px #00000029, 0px 4px 4px 0px #0000000f,
-    0px 1px 1px 0px #0000001f;
+  box-shadow: var(--project-card-shadow);
 }
 
 /* = «C5» Синій оверлей з текстом на картках сторінки Портфоліо з'являється
@@ -656,13 +679,10 @@ body {
   line-height: calc(30 / 16);
 }
 
-/* ============================== MODAL WINDOW ====================== */
+/* ============================== HW5 MODAL WINDOW ====================== */
 /*
-«D6» Спочатку модальне вікно і бекдроп приховані за допомогою класу is-hidden на бекдропі, в
+Спочатку модальне вікно і бекдроп приховані за допомогою класу is-hidden на бекдропі, в
 селекторі якого використовуються властивості visibility, opacity і pointer-events.
- «D7» Якщо прибрати з бекдропа клас is-hidden - з'являється бекдроп і модальне вікно.
- «D8» Поява і приховування модального вікна анімовано за допомогою переходу
-з довільним ефектом, наприклад scale або translate, і opacity.
 */
 .is-hidden {
   visibility: hidden;
@@ -670,9 +690,7 @@ body {
   pointer-events: none;
 }
 
-/*  «D1» оформлення напівпрозорого «бекдропа»
-    «D2» «Бекдроп» заповнює 100% висоти і ширини в'юпорту
-*/
+/* оформлення напівпрозорого «бекдропа». «Бекдроп» заповнює 100% висоти і ширини в'юпорту */
 .backdrop {
   position: fixed;
   top: 0;
@@ -685,8 +703,7 @@ body {
 }
 
 /*
-«D4» Модальне вікно спозиційоване посередині бекдропа.
-«D8» Поява і приховування модального вікна анімовано за
+ Модальне вікно спозиційоване посередині бекдропа. Поява і приховування модального вікна анімовано за
 допомогою переходу з довільним ефектом, наприклад scale або translate, і opacity.
 */
 .modal {
@@ -702,24 +719,107 @@ body {
   /* margin: auto; */
   transform: translate(-50%, -50%);
   transition: transform var(--anim-timing);
+  padding: 40px;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .backdrop.is-hidden .modal {
   transform: translate(-50%, -50%) scale(0.1) rotate(-90deg);
 }
 
-/* «D5» оформлення кнопки закриття модального вікна  */
+/* оформлення кнопки закриття модального вікна  */
 .btn-close {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: transparent;
-  /* #ffffff; */
   position: absolute;
   right: 8px;
   top: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ============================== HW MODAL WINDOW FORM ====================== */
+/* HW6 contact request form */
+.modal-title {
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: calc(23 / 20);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.modal-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: calc(14 / 12);
+  letter-spacing: 0.01em;
+  margin-bottom: 4px;
+}
+
+.input-field {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.modal-icon {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(12px, -50%);
+}
+
+.input-modal {
+  width: 100%;
+  height: 100%;
+  padding-left: 42px;
+  border: var(--border-modal);
+  border-radius: 4px;
+  box-shadow: var(--card-shadow);
+}
+
+.comment {
+  height: 120px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  resize: none;
+}
+
+.comment::placeholder {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: calc(14 / 12);
+  letter-spacing: 0.01em;
+}
+
+.field-consent {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.consent-label {
+  padding-left: 36px;
+}
+
+.consent-icon {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(75%, -50%);
+}
+
+.consent-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
 }
