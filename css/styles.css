@@ -10,11 +10,14 @@
   --color-background-black: #2f303a;
   --color-border: #eeeeee;
   --color-fill-inactive: #afb1b8;
-  --border-modal: 1px solid rgba(33, 33, 33, 0.2);
-  --card-shadow: 0px 2px 1px 0px #00000033, 0px 1px 1px 0px #00000024,
+  --border-input-field: 1px solid rgba(33, 33, 33, 0.2);
+  --border-input-ftr: 1px solid #ffffff4d;
+  --shadow-static-triple: 0px 2px 1px 0px #00000033, 0px 1px 1px 0px #00000024,
     0px 1px 3px 0px #0000001f;
   --project-card-shadow: 1px 4px 6px 0px #00000029, 0px 4px 4px 0px #0000000f,
     0px 1px 1px 0px #0000001f;
+  --shadow-btn-triple: 0px 2px 2px 0px #0000001f, 0px 1px 2px 0px #00000014,
+    0px 3px 1px 0px #0000001a;
   --btn-shadow: 0px 4px 4px 0px #00000026;
   --btn-shadow-test: 0px 40px 4px 0px #ff000026;
 
@@ -183,14 +186,14 @@ body {
   transition: color var(--anim-timing);
 }
 
-/* «C4» В навігації, за допомогою ::after, зроблено підкреслення посилання
+/* В навігації, за допомогою ::after, зроблено підкреслення посилання
 поточної сторінки */
 .nav-list-link.current {
   position: relative;
   color: var(--color-accent);
 }
 
-/* «C4» UNDERLINED UNDER HOVER */
+/* UNDERLINED UNDER HOVER */
 /* .nav-list-link.current:hover.nav-list-link.current::after {
   content: "";
   height: 4px;
@@ -201,7 +204,7 @@ body {
   bottom: -20px;
 } */
 
-/* «C4» ALWAYS UNDERLINED */
+/*  ALWAYS UNDERLINED */
 .nav-list-link.current::after {
   content: "";
   height: 4px;
@@ -225,7 +228,6 @@ body {
 
 .ftr-container {
   display: flex;
-  /* align-items: flex-start; */
   align-items: baseline;
   justify-content: space-between;
 }
@@ -269,7 +271,6 @@ body {
 
 .ftr-wrap {
   padding-top: 12px;
-  margin-left: 70px;
 }
 
 .ftr-hdr {
@@ -310,41 +311,44 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  box-shadow: none;
-  /*   box-shadow: var(--btn-shadow); */
+  box-shadow: var(--btn-shadow);
   /* transition: color var(--anim-timing-test); */
-  transition: box-shadow var(--anim-timing-test);
 }
-.btn-submit:hover,
+
+/* .btn-submit:hover,
 .btn-submit:focus {
-  /* color: var(--color-white); */
+  / * color: var(--color-white); * /
   box-shadow: var(--btn-shadow-test);
-}
+} */
 
 .email-input {
   height: 50px;
   width: 358px;
-  border-radius: 4px;
-  border-style: solid;
-  border-width: 1px;
+  padding: 15px 16px;
   background-color: transparent;
   color: var(--color-footer-grey);
   font-size: 16px;
   font-weight: 400;
   line-height: calc(20 / 16);
-  padding: 15px 16px;
+  border: var(--border-input-ftr);
+  border-radius: 4px;
+
   box-shadow: none;
-  /*   box-shadow: (var(--btn-shadow); */
-  transition: border-color var(--anim-timing-test);
-  transition: box-shadow var(--anim-timing-test);
+  transition: border-color var(--anim-timing), box-shadow var(--anim-timing);
 }
 
 .email-input:hover,
 .email-input:focus {
+  /* outline-color: transparent; */
   border-color: var(--color-accent);
-  box-shadow: var(--btn-shadow-test);
-  /*   box-shadow: (var(--btn-shadow); */
+  box-shadow: var(--btn-shadow);
+  /* box-shadow: var(--btn-shadow-test); */
 }
+
+/* .email-input:focus-visible {
+  outline-color: transparent;
+    border-color: var(--color-accent);
+} */
 
 /* ============================== SOCIAL LINKS ============================== */
 
@@ -486,7 +490,7 @@ body {
   position: relative;
 }
 
-/* = «C3» В секції Чим ми займаємось текст з фоном спозиційований
+/* = В секції Чим ми займаємось текст з фоном спозиційований
 поверх зображення. */
 .competence-title {
   position: absolute;
@@ -511,7 +515,7 @@ body {
   text-align: center;
   padding-bottom: 30px;
   border-radius: 0px 0px 4px 4px;
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--shadow-static-triple);
 }
 
 .team-card-name {
@@ -601,8 +605,7 @@ body {
 .filter-btn:focus {
   color: var(--color-white);
   background-color: var(--color-accent);
-  box-shadow: 0px 2px 2px 0px #0000001f, 0px 1px 2px 0px #00000014,
-    0px 3px 1px 0px #0000001a;
+  box-shadow: var(--shadow-btn-triple);
 }
 
 .project-list {
@@ -630,9 +633,8 @@ body {
   box-shadow: var(--project-card-shadow);
 }
 
-/* = «C5» Синій оверлей з текстом на картках сторінки Портфоліо з'являється
-при ховері в будь-якому місці картки. */
-/* = «C6» оверлей  виїжджає знизу */
+/* =   Синій оверлей з текстом на картках сторінки Портфоліо з'являється
+при ховері в будь-якому місці картки. оверлей  виїжджає знизу */
 .project-image-wrap {
   position: relative;
   overflow: hidden;
@@ -680,6 +682,7 @@ body {
 }
 
 /* ============================== HW5 MODAL WINDOW ====================== */
+
 /*
 Спочатку модальне вікно і бекдроп приховані за допомогою класу is-hidden на бекдропі, в
 селекторі якого використовуються властивості visibility, opacity і pointer-events.
@@ -714,14 +717,10 @@ body {
   min-height: 581px;
   background-color: #ffffff;
   border-radius: 4px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  /* margin: auto; */
+  box-shadow: var(--shadow-static-triple);
   transform: translate(-50%, -50%);
   transition: transform var(--anim-timing);
   padding: 40px;
-  /* display: flex;
-  justify-content: center; */
 }
 
 .backdrop.is-hidden .modal {
@@ -741,13 +740,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  fill: var(--color-secondary);
+  transition: fill var(--anim-timing);
+}
+
+.btn-close:hover,
+.btn-close:focus {
+  fill: var(--color-accent);
 }
 
 /* ============================== HW MODAL WINDOW FORM ====================== */
-/* HW6 contact request form */
+
 .modal-title {
   display: block;
   width: 100%;
+  color: var(--color-secondary);
   font-size: 20px;
   font-weight: 700;
   line-height: calc(23 / 20);
@@ -755,7 +762,9 @@ body {
   margin-bottom: 12px;
 }
 
-.modal-label {
+/* HW6 contact request form */
+
+.input-label {
   display: block;
   font-size: 12px;
   font-weight: 400;
@@ -764,6 +773,35 @@ body {
   margin-bottom: 4px;
 }
 
+/* borders and style for :focus */
+.bordered {
+  border: var(--border-input-field);
+  border-radius: 4px;
+
+  transition: border-color var(--anim-timing);
+}
+
+.bordered:focus-visible {
+  outline-style: none;
+}
+
+.bordered:hover,
+.bordered:focus {
+  border-color: var(--color-accent);
+}
+
+.bordered + svg,
+.bordered + svg {
+  fill: var(--color-secondary);
+  transition: fill var(--anim-timing);
+}
+
+.bordered:hover + svg,
+.bordered:focus + svg {
+  fill: var(--color-accent);
+}
+
+/* box for icon and input - name, phone, email*/
 .input-field {
   position: relative;
   width: 100%;
@@ -771,27 +809,27 @@ body {
   margin-bottom: 12px;
 }
 
-.modal-icon {
+.input-field > svg {
   position: absolute;
   top: 50%;
-  left: 0%;
-  transform: translate(12px, -50%);
+  left: 12px;
+  transform: translateY(-50%);
 }
 
-.input-modal {
+.input-field > input {
   width: 100%;
   height: 100%;
   padding-left: 42px;
-  border: var(--border-modal);
-  border-radius: 4px;
-  box-shadow: var(--card-shadow);
+  cursor: pointer;
 }
 
 .comment {
+  width: 100%;
   height: 120px;
   padding: 12px 16px;
   margin-bottom: 20px;
   resize: none;
+  cursor: pointer;
 }
 
 .comment::placeholder {
@@ -801,25 +839,53 @@ body {
   letter-spacing: 0.01em;
 }
 
-.field-consent {
-  margin-bottom: 30px;
+/* HW#6 Customized checkbox */
+.consent-text {
+  display: flex;
   position: relative;
-}
-
-.consent-label {
-  padding-left: 36px;
-}
-
-.consent-icon {
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(75%, -50%);
+  justify-content: center;
+  align-items: baseline;
+  cursor: pointer;
+  margin-bottom: 30px;
 }
 
 .consent-link {
   color: var(--color-accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
+}
+
+/* Hide default checkbox */
+.consent-input {
+  /* display: none; Not Ok - not getting tab focus*/
+  border: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  padding: 0px;
+  position: absolute;
+}
+
+.consent-text span {
+  width: 16px;
+  height: 15px;
+  border: 2px solid var(--color-secondary);
+  border-radius: 2px;
+  margin-right: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: transparent;
+  transition: border-color var(--anim-timing);
+}
+
+.consent-input:checked + .consent-text span {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  fill: #fff;
+}
+
+.consent-input:hover + .consent-text span,
+.consent-input:focus + .consent-text span {
+  border-color: var(--color-accent);
 }
